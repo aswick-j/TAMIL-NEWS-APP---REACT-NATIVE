@@ -1,7 +1,6 @@
 import React,{useState, useCallback, useRef} from 'react'
 import { StyleSheet, Text, View,Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { WebView } from 'react-native-webview';
 import YoutubePlayer from "react-native-youtube-iframe";
 
 const YoutubeStories = () => {
