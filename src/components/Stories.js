@@ -2,9 +2,10 @@ import React from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-const Stories = () => {
-  const navigation = useNavigation();
 
+const Stories = () => {
+ 
+  const navigation = useNavigation(); 
   const storyInfo = [
     {
       id: 1,
@@ -49,12 +50,7 @@ const Stories = () => {
         return (
           <TouchableOpacity
             key={index}
-            onPress={() =>
-              navigation.push('Status', {
-                name: data.name,
-                image: data.image,
-              })
-            }>
+            onPress={() => navigation.navigate("YoutubeStories")} >
             <View
               style={{
                 flexDirection: 'column',
