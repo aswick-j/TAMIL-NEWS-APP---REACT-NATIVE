@@ -13,29 +13,29 @@ const Stories = () => {
       image: require('../assets/channels4_profile.jpg'),
     },
     {
-      id: 0,
+      id: 2,
       name: 'Sun News',
       image: require('../assets/sun-news-logo-300x300.jpg'),
     },
     {
-      id: 0,
+      id: 3,
       name: 'Polimer News',
       image: require('../assets/c8e15db56ae56c48af60e11f4b196d7a_screen.jpg'),
     },
     {
-      id: 0,
+      id: 4,
       name: 'Thanthi News',
       image: require('../assets/unnamed.png'),
     },
     ,
     {
-      id: 0,
+      id: 5,
       name: 'News 7',
       image: require('../assets/unnamed.jpg'),
     },
     ,
     {
-      id: 0,
+      id: 6,
       name: 'Captain News',
       image: require('../assets/captain.png'),
     },
@@ -50,7 +50,9 @@ const Stories = () => {
         return (
           <TouchableOpacity
             key={index}
-            onPress={() => navigation.navigate("YoutubeStories")} >
+            onPress={() => navigation.navigate("YoutubeStories",{
+              "id":data.id
+            })} >
             <View
               style={{
                 flexDirection: 'column',

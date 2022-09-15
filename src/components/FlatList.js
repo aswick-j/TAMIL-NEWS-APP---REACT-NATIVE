@@ -10,27 +10,41 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { sliderData } from "../models/data";
+import axios from "axios"
 
 const { width } = Dimensions.get("screen");
 
 const FlatListData = () => {
+  const [news, setNews] = useState([]);
+
+
+  
+  useEffect(() => {
+
+    axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_banner_news")
+    .then((response) => {
+      setNews(response.data.items);
+    //  console.log(".NEWS DATA...",response.data.items);
+    });
+  }, []);
   const Card = () => {
     return (
       <>
-        {sliderData.map((data) => (
+        {news.map((data) => (
           <Pressable
             activeOpacity={0.8}
-            onPress={() =>
-              navigation.navigate("DetailsScreen", {
-                image: data.image,
-                title: data.title,
-                //    "description": data.description,
-                //    "date":data.published_date
-              })
-            }
+            // onPress={() =>
+            //   navigation.navigate("DetailsScreen", {
+            //     // image: data.image,
+            //     title: data.title,
+            //     //    "description": data.description,
+            //     //    "date":data.published_date
+            //   }
+            //   )
+            // }
           >
             <View style={style.card}>
-              <Image source={{ uri: data.image }} style={style.cardImage} />
+              <Image source={{ uri: data.thumbnail }} style={style.cardImage} />
               <View style={{ marginTop: 10 }}>
                 <View
                   style={{
@@ -43,7 +57,7 @@ const FlatListData = () => {
                     {data.title}
                   </Text>
                   {/* <Text
-                    style={{fontWeight: 'bold', color: COLORS.blue, fontSize: 16}}>
+                    style={{fontWeight: 'bold', color:"blue", fontSize: 16}}>
                     {data.published_date}
                   </Text> */}
                 </View>
@@ -92,7 +106,7 @@ export default FlatListData;
 
 const style = StyleSheet.create({
   card: {
-    height: 300,
+    height: 220,
     backgroundColor: "white",
     elevation: 10,
     width: width - 40,

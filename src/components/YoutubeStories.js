@@ -3,8 +3,29 @@ import { StyleSheet, Text, View,Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import YoutubePlayer from "react-native-youtube-iframe";
 
-const YoutubeStories = () => {
+const YoutubeStories = ({route}) => {
+  const id = route.params;
+  // console.log("====",id);
 
+  let utubeId;
+
+  if(id.id==1){
+    utubeId = "NX18e_Wh7NA";
+  }else if(id.id==2){
+    utubeId = "2ywxK3HC4iA";
+  }else if(id.id==3){
+    utubeId = "pjtqXBTWliE";
+  }else if(id.id==4){
+    utubeId = "FeweQREkl44";
+  }else if(id.id==5){
+    utubeId = "NX18e_Wh7NA";
+  }else if(id.id==6){
+    utubeId = "2sdziNt17qU";
+  }
+  
+// console.log('====================================');
+// console.log(utubeId);
+// console.log('====================================');
     const [playing, setPlaying] = useState(false);
 
     const onStateChange = useCallback((state) => {
@@ -23,10 +44,10 @@ const YoutubeStories = () => {
       <YoutubePlayer
         height={300}
         play={playing}
-        videoId={"mLI_QxszYrU"}
+        videoId={utubeId}
         onChangeState={onStateChange}
       />
-      <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
+      <Button style={{width:10}} title={playing ? "pause" : "play"} onPress={togglePlaying} />
     </View>
     </SafeAreaView>
   )
