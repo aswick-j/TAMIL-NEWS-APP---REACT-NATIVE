@@ -8,6 +8,23 @@ import FlatList from "../components/FlatList";
 import Stories from "../components/Stories";
 
 const Home = () => {
+
+  var day = new Date();
+  var hr = day.getHours();
+
+  let greeting;
+
+  if (hr >= 0 && hr < 12) {
+    greeting = "Good Morning!";
+  } else if (hr == 12) {
+    greeting = "Good Noon!";
+  } else if (hr >= 12 && hr <= 17) {
+    greeting = "Good Afternoon!";
+  } else if (hr >= 17 && hr <= 19) {
+    greeting = "Good Evening!";
+  } else {
+    greeting = "Good Night!";
+  }
   return (
     <View style={{ backgroundColor: "white", height: "100%" }}>
       <StatusBar
@@ -32,7 +49,7 @@ const Home = () => {
               paddingBottom: 10,
             }}
           >
-            Good Evening
+            {greeting}
           </Text>
         </View>
         <Text style={styles.livetext}>Live</Text>
@@ -45,7 +62,7 @@ const Home = () => {
         <CarsouleCard />
       </View>
       <Text style={styles.Breakn}>Breaking News</Text>
-      <FlatList/>
+      <FlatList />
     </View>
   );
 };
