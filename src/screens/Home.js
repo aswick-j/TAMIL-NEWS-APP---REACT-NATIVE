@@ -5,7 +5,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Ionic from "react-native-vector-icons/Ionicons";
 import CarsouleCard from "../components/CarsouleCard";
 import FlatList from "../components/FlatList";
+import ListNews from "../components/ListNews";
 import Stories from "../components/Stories";
+import { sliderData } from "../models/data";
 
 const Home = () => {
 
@@ -26,6 +28,7 @@ const Home = () => {
     greeting = "Good Night!";
   }
   return (
+    <ScrollView>
     <View style={{ backgroundColor: "white", height: "100%" }}>
       <StatusBar
         backgroundColor="white"
@@ -58,12 +61,13 @@ const Home = () => {
         </ScrollView>
       </View>
       <View>
-        <Text style={styles.livetext}>Top Headlines</Text>
+        <Text style={styles.livetext1}>Top Headlines</Text>
         <CarsouleCard />
       </View>
       <Text style={styles.Breakn}>Breaking News</Text>
       <FlatList />
     </View>
+    </ScrollView>
   );
 };
 
@@ -75,9 +79,15 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "800",
   },
+  livetext1: {
+    paddingLeft: 20,
+    marginBottom:10,
+    color: "black",
+    fontWeight: "800",
+  },
   Breakn: {
     paddingLeft: 20,
-    marginTop: 10,
+    marginTop: 5,
     color: "black",
     fontWeight: "800",
   },

@@ -26,6 +26,7 @@ const CarsouleCard = () => {
     <View>
     <Carousel
     layout="default"
+    autoplay={true}
     layoutCardOffset={9}
     ref={isCarousel}
     data={news}

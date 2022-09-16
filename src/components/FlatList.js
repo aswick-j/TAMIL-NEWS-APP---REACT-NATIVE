@@ -6,27 +6,45 @@ import {
   FlatList,
   Dimensions,
   Pressable,
+  TouchableOpacity,
   Image,
+  Button,
 } from "react-native";
+import * as rssParser from 'react-native-rss-parser';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { sliderData } from "../models/data";
-import axios from "axios"
+import axios from "axios";
 
 const { width } = Dimensions.get("screen");
 
 const FlatListData = () => {
   const [news, setNews] = useState([]);
 
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_banner_news"
+  //     )
+  //     .then((response) => {
+  //       setNews(response.data.items);
+  //       //  console.log(".NEWS DATA...",response.data.items);
+  //     });
+  // }, []);
+
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://newsapi.in/newsapi/news.php?key=3UvFfT48bFHmw5orOYBqYujEd6EHJt&category=tamil_state&content_type=full_content"
+      )
+      .then((res) => {
+        const data = res.data;
+        console.log("value=====", data.News);
+        setNews(data.News);
+      });
+  }, []);
 
   
-  useEffect(() => {
-
-    axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_banner_news")
-    .then((response) => {
-      setNews(response.data.items);
-    //  console.log(".NEWS DATA...",response.data.items);
-    });
-  }, []);
   const Card = () => {
     return (
       <>
@@ -44,45 +62,59 @@ const FlatListData = () => {
             // }
           >
             <View style={style.card}>
-              <Image source={{ uri: data.thumbnail }} style={style.cardImage} />
-              <View style={{ marginTop: 10 }}>
-                <View
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Image
+                  source={{ uri:"https://ualr.edu/elearning/files/2020/10/No-Photo-Available.jpg" }}
+                  style={style.cardImage}
+                />
+                <View style={{ marginTop: 5 }}>
+                  <View
+                  // style={{
+                  //   flexDirection: "row",
+                  //   // justifyContent: "space-between",
+                  //   marginTop: 10,
+                  // }}
+                  >
+                    <Text
+                      numberOfLines={4}
+                      style={{
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        width: "30%",
+                        marginLeft: 10,
+                      }}
+                    >
+                      {data.title}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  // numberOfLines={4}
                   style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    marginTop: 10,
+                    fontSize: 10,
+                    fontWeight: "bold",
+                    // width: "30%",
+                    marginTop: 15,
+                    marginLeft: 0,
                   }}
                 >
-                  <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-                    {data.title}
-                  </Text>
-                  {/* <Text
-                    style={{fontWeight: 'bold', color:"blue", fontSize: 16}}>
-                    {data.published_date}
-                  </Text> */}
-                </View>
-
-                {/* Location text */}
-
-                {/* <Text style={{ color: "grey", fontSize: 14, marginTop: 5 }}>
-                    {data.published_date}
-                  </Text> */}
-
-                {/* Facilities container */}
-                {/* <View style={{marginTop: 10, flexDirection: 'row'}}>
-                  <View style={style.facility}>
-                    <Icon name="hotel" size={18} />
-                    <Text style={style.facilityText}>2</Text>
-                  </View>
-                  <View style={style.facility}>
-                    <Icon name="bathtub" size={18} />
-                    <Text style={style.facilityText}>2</Text>
-                  </View>
-                  <View style={style.facility}>
-                    <Icon name="aspect-ratio" size={18} />
-                    <Text style={style.facilityText}>100m</Text>
-                  </View>
-                </View> */}
+                  {data.published_date}
+                </Text>
+                <TouchableOpacity onPress={"onPress"} style={style.appButtonContainer}>
+    <Text style={style.appButtonText}>See More</Text>
+  </TouchableOpacity>
               </View>
             </View>
           </Pressable>
@@ -106,7 +138,7 @@ export default FlatListData;
 
 const style = StyleSheet.create({
   card: {
-    height: 220,
+    height: 150,
     backgroundColor: "white",
     elevation: 10,
     width: width - 40,
@@ -116,8 +148,23 @@ const style = StyleSheet.create({
     marginTop: 10,
   },
   cardImage: {
-    width: "100%",
-    height: 120,
+    width: width - 300,
+    height: 80,
     borderRadius: 15,
   },
+  appButtonContainer: {
+    marginTop:5,
+    elevation: 8,
+    backgroundColor: "tomato",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12
+  },
+  appButtonText: {
+    fontSize: 10,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
 });
