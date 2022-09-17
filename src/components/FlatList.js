@@ -25,7 +25,7 @@ const FlatListData = () => {
     console.log("======");
     axios
       .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_topnews"
+        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_Tamilnadu_News"
       )
       .then((response) => {
         setNews(response.data.items);
