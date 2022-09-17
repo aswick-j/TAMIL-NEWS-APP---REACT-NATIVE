@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import { StyleSheet, Text, View, StatusBar, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,6 +8,8 @@ import FlatList from "../components/FlatList";
 import ListNews from "../components/ListNews";
 import Stories from "../components/Stories";
 import { sliderData } from "../models/data";
+
+import * as Location from 'expo-location';
 
 const Home = () => {
 
@@ -26,6 +28,33 @@ const Home = () => {
     greeting = "Good Evening!";
   } else {
     greeting = "Good Night!";
+  }
+
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  
+
+  useEffect(() => {
+    console.log("==pdd");
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      console.log("==========ddd",location);
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = 'Locating ...';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
   }
   return (
     <ScrollView>
@@ -53,6 +82,16 @@ const Home = () => {
             }}
           >
             {greeting}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: "500",
+              color: "black",
+              paddingBottom: 10,
+            }}
+          >
+            {text}
           </Text>
         </View>
         <Text style={styles.livetext}>Live</Text>

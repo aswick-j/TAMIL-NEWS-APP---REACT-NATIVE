@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const NewsFeed = () => {
   return (
     <SafeAreaView>
-    <Text>Newsfesed</Text>
+    <Text style={{alignContent:"center"}}>COMING SOON !</Text>
     </SafeAreaView>
   )
 }

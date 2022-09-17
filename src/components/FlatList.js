@@ -10,56 +10,44 @@ import {
   Image,
   Button,
 } from "react-native";
-import * as rssParser from 'react-native-rss-parser';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { sliderData } from "../models/data";
 import axios from "axios";
+import {useNavigation} from '@react-navigation/native';
 
 const { width } = Dimensions.get("screen");
 
 const FlatListData = () => {
+  const navigation = useNavigation();
   const [news, setNews] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_banner_news"
-  //     )
-  //     .then((response) => {
-  //       setNews(response.data.items);
-  //       //  console.log(".NEWS DATA...",response.data.items);
-  //     });
-  // }, []);
-
-
   useEffect(() => {
+    console.log("======");
     axios
       .get(
-        "https://newsapi.in/newsapi/news.php?key=3UvFfT48bFHmw5orOYBqYujEd6EHJt&category=tamil_state&content_type=full_content"
+        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_topnews"
       )
-      .then((res) => {
-        const data = res.data;
-        console.log("value=====", data.News);
-        setNews(data.News);
+      .then((response) => {
+        setNews(response.data.items);
+        console.log(".NEWS DATA...", response.data.items.length);
       });
   }, []);
 
-  
   const Card = () => {
     return (
       <>
         {news.map((data) => (
           <Pressable
             activeOpacity={0.8}
-            // onPress={() =>
-            //   navigation.navigate("DetailsScreen", {
-            //     // image: data.image,
-            //     title: data.title,
-            //     //    "description": data.description,
-            //     //    "date":data.published_date
-            //   }
-            //   )
-            // }
+            onPress={() =>
+              navigation.navigate("Details", {
+                "image": data.thumbnail,
+                "title": data.title,
+                "description": data.description,
+                "date":data.pubDate
+     
+              })
+            }
           >
             <View style={style.card}>
               <View
@@ -69,7 +57,7 @@ const FlatListData = () => {
                 }}
               >
                 <Image
-                  source={{ uri:"https://ualr.edu/elearning/files/2020/10/No-Photo-Available.jpg" }}
+                  source={{ uri: data.thumbnail }}
                   style={style.cardImage}
                 />
                 <View style={{ marginTop: 5 }}>
@@ -85,7 +73,7 @@ const FlatListData = () => {
                       style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        width: "30%",
+                        width: "28%",
                         marginLeft: 10,
                       }}
                     >
@@ -94,6 +82,15 @@ const FlatListData = () => {
                   </View>
                 </View>
               </View>
+              <View
+                style={{
+                  borderWidth: 0.3,
+                  borderStyle: "dashed",
+                  borderRadius: 5,
+                  borderColor: "grey",
+                  marginTop: 6,
+                }}
+              ></View>
               <View
                 style={{
                   flexDirection: "row",
@@ -106,15 +103,15 @@ const FlatListData = () => {
                     fontSize: 10,
                     fontWeight: "bold",
                     // width: "30%",
-                    marginTop: 15,
+                    marginTop: 5,
                     marginLeft: 0,
                   }}
                 >
-                  {data.published_date}
+                  {data.pubDate}
                 </Text>
-                <TouchableOpacity onPress={"onPress"} style={style.appButtonContainer}>
-    <Text style={style.appButtonText}>See More</Text>
-  </TouchableOpacity>
+             
+                  <Text style={style.appButtonText}>See More</Text>
+               
               </View>
             </View>
           </Pressable>
@@ -138,7 +135,7 @@ export default FlatListData;
 
 const style = StyleSheet.create({
   card: {
-    height: 150,
+    height: 130,
     backgroundColor: "white",
     elevation: 10,
     width: width - 40,
@@ -153,18 +150,19 @@ const style = StyleSheet.create({
     borderRadius: 15,
   },
   appButtonContainer: {
-    marginTop:5,
+    marginTop: 5,
     elevation: 8,
     backgroundColor: "tomato",
     borderRadius: 10,
     paddingVertical: 10,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
   },
   appButtonText: {
     fontSize: 10,
-    color: "#fff",
+    marginTop: 5,
+    color: "tomato",
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase"
-  }
+    textTransform: "uppercase",
+  },
 });

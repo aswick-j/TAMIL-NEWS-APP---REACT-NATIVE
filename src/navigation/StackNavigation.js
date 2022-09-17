@@ -8,6 +8,7 @@ import NewsFeed from "../screens/NewsFeed";
 import LiveNews from "../screens/LiveNews";
 import Weather from "../screens/Weather";
 import Stories from "../components/Stories";
+import DetailsScreen from "../nestedScreen/DetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const MainStackNavigator = () => {
     <Stack.Navigator >
       <Stack.Screen name="Home1" component={Home} options={{ headerShown: false }} />
       <Stack.Screen name="Stories" component={Stories} options={{ headerShown: false }} />
+      <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }} />
          <Stack.Screen name="YoutubeStories" component={YoutubeStories} options={{ headerShown: false }} />
     </Stack.Navigator>
   );

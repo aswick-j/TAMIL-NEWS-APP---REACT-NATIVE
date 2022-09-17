@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const Weather = () => {
   return (
     <SafeAreaView>
-    <Text>Weather</Text>
+    <Text>COMING SOON</Text>
     </SafeAreaView>
   )
 }

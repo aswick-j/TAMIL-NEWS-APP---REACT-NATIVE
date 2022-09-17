@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const LiveNews = () => {
   return (
     <SafeAreaView>
-    <Text>LiveNews</Text>
+    <Text>COMING SOON</Text>
     </SafeAreaView>
   )
 }
