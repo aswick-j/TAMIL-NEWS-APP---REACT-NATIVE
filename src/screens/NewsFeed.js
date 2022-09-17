@@ -21,14 +21,14 @@ const NewsFeed = () => {
   const navigation = useNavigation();
   const [news, setNews] = useState([]);
   useEffect(() => {
+    console.log("======");
     axios
       .get(
-        "https://newsapi.in/newsapi/news.php?key=3UvFfT48bFHmw5orOYBqYujEd6EHJt&category=tamil_state&content_type=full_content"
+        " https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_health"
       )
-      .then((res) => {
-        const data = res.data;
-        console.log("value=====", data.News);
-        setNews(data.News);
+      .then((response) => {
+        setNews(response.data.items);
+        console.log(".NEWS DATA...", response.data.items.length);
       });
   }, []);
 
@@ -40,10 +40,10 @@ const NewsFeed = () => {
             activeOpacity={0.8}
             onPress={() =>
               navigation.navigate("Details", {
-                "image": data.image,
+                "image": data.thumbnail,
                 "title": data.title,
                 "description": data.description,
-                "date":data.published_date
+                "date":data.pubDate
      
               })
             }

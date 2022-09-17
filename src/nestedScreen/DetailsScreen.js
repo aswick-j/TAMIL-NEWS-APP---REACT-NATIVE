@@ -13,19 +13,20 @@ import {
   StatusBar,
 } from "react-native";
 
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import IoniIcons from "react-native-vector-icons/Ionicons";
 
 const { width } = Dimensions.get("screen");
 const DetailsScreen = ({ navigation, route }) => {
   const news = route.params;
-  console.log("====", news);
+  // console.log("====", news);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView showsVerticalScrollIndicator={false}>
           <View style={style.header}>
             <View style={style.headerBtn}>
-              <Icon
-                name="arrow-back-ios"
+              <IoniIcons
+                name="chevron-back"
                 size={20}
                 onPress={navigation.goBack}
               />

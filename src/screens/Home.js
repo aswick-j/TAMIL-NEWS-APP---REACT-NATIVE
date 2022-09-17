@@ -10,6 +10,8 @@ import Stories from "../components/Stories";
 import { sliderData } from "../models/data";
 
 import * as Location from 'expo-location';
+import Geocoder from 'react-native-geocoding';
+import axios from "axios";
 
 const Home = () => {
 
@@ -22,7 +24,7 @@ const Home = () => {
     greeting = "Good Morning!";
   } else if (hr == 12) {
     greeting = "Good Noon!";
-  } else if (hr >= 12 && hr <= 17) {
+  } else if (hr >= 12 && hr <= 16) {
     greeting = "Good Afternoon!";
   } else if (hr >= 17 && hr <= 19) {
     greeting = "Good Evening!";
@@ -36,7 +38,6 @@ const Home = () => {
   
 
   useEffect(() => {
-    console.log("==pdd");
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
@@ -45,8 +46,14 @@ const Home = () => {
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      console.log("==========ddd",location);
-      setLocation(location);
+      // console.log("==========ddd",location);
+      const longitude = location.coords.longitude
+      const latitude = location.coords.latitude
+      const rge = await axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=08591b29db894d678a5b6cc71e4f9abb`)
+     //console.log("====dd1d",rge.data.features[0].properties.city);
+     const data1 = rge.data.features[0].properties.county
+      setLocation(data1);
+
     })();
   }, []);
 
@@ -54,7 +61,7 @@ const Home = () => {
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    text = location;
   }
   return (
     <ScrollView>
@@ -81,16 +88,18 @@ const Home = () => {
               paddingBottom: 10,
             }}
           >
+           
             {greeting}
           </Text>
           <Text
             style={{
               fontSize: 15,
               fontWeight: "500",
-              color: "black",
+              color: "tomato",
               paddingBottom: 10,
             }}
           >
+             <Ionic name="location" size={18} color={"tomato"} />
             {text}
           </Text>
         </View>

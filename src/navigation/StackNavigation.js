@@ -42,7 +42,7 @@ const LiveStackNavigator = () => {
   const WeatherStackNavigator = () => {
     return (
       <Stack.Navigator >
-         <Stack.Screen name="Weather" component={Weather} options={{ headerShown: false }} />
+         <Stack.Screen name="Weather1" component={Weather} options={{ headerShown: false }} />
       </Stack.Navigator>
     );
   }
