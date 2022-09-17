@@ -22,20 +22,22 @@ const FlatListData = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    console.log("======");
+   
     axios
       .get(
         "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_Tamilnadu_News"
       )
       .then((response) => {
         setNews(response.data.items);
-        console.log(".NEWS DATA...", response.data.items.length);
+
+        // console.log(".NEWS DATA...", response.data.items);
       });
   }, []);
+  
 
   const Card = () => {
     return (
-      <>
+      <View>
         {news.map((data) => (
           <Pressable
             activeOpacity={0.8}
@@ -116,7 +118,7 @@ const FlatListData = () => {
             </View>
           </Pressable>
         ))}
-      </>
+      </View>
     );
   };
 
@@ -125,8 +127,8 @@ const FlatListData = () => {
       snapToInterval={width - 20}
       // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingLeft: 20, paddingVertical: 20 }}
-      data={sliderData}
-      renderItem={({ item }) => <Card house={item} />}
+      data={news}
+      renderItem={({ news }) => <Card item={news} />}
     />
   );
 };

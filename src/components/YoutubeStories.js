@@ -49,7 +49,9 @@ const YoutubeStories = ({route}) => {
         videoId={utubeId}
         onChangeState={onStateChange}
       />
+      <View style={[{ width: "30%", margin: 10, backgroundColor: "red",borderRadius:10,marginLeft:"35%" }]}>
       <Button color="tomato" title={playing ? "pause" : "play"} onPress={togglePlaying} />
+      </View>
     </View>
     </SafeAreaView>
   )

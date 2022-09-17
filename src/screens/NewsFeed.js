@@ -34,7 +34,7 @@ const NewsFeed = () => {
 
   const Card = () => {
     return (
-      <>
+      <View>
         {news.map((data) => (
           <Pressable
             activeOpacity={0.8}
@@ -115,7 +115,7 @@ const NewsFeed = () => {
             </View>
           </Pressable>
         ))}
-      </>
+      </View>
     );
   };
 
