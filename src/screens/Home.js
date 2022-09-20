@@ -9,8 +9,9 @@ import ListNews from "../components/ListNews";
 import Stories from "../components/Stories";
 import { sliderData } from "../models/data";
 
+import DashedLine from 'react-native-dashed-line';
+
 import * as Location from 'expo-location';
-import Geocoder from 'react-native-geocoding';
 import axios from "axios";
 
 const Home = () => {

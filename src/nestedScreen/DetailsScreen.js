@@ -50,8 +50,8 @@ const DetailsScreen = ({ navigation, route }) => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           ></View>
-         <Text style={{ marginTop: 20, color: "grey" }}>
-           Article Credits : PuthiyaThalaimurai
+         <Text style={{ marginTop: 20,fontWeight:"bold", color: "tomato" }}>
+           Article Credits : Puthiya Thalaimurai
           </Text>
           <Text style={{ marginTop: 20, color: "black" }}>
             {news.description}
@@ -106,7 +106,7 @@ const style = StyleSheet.create({
   headerBtn: {
     height: 50,
     width: 50,
-    backgroundColor: "white",
+    backgroundColor: "#fafafa",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",

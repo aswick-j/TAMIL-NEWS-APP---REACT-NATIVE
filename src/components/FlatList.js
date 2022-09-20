@@ -128,7 +128,7 @@ const FlatListData = () => {
       // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingLeft: 20, paddingVertical: 20 }}
       data={news}
-      renderItem={({ news }) => <Card item={news} />}
+      renderItem={({ news }) => <Card/>}
     />
   );
 };

@@ -3,8 +3,13 @@ import { StyleSheet, Text, View,Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import YoutubePlayer from "react-native-youtube-iframe";
 
+import {useNavigation} from '@react-navigation/native';
 
-const YoutubeStories = ({route}) => {
+
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import IoniIcons from "react-native-vector-icons/Ionicons";
+
+const YoutubeStories = ({navigation,route}) => {
   const id = route.params;
   // console.log("====",id);
 
@@ -41,7 +46,18 @@ const YoutubeStories = ({route}) => {
     }, []);
   return (
     <SafeAreaView>
-      
+           <View style={style.header}>
+            <View style={style.headerBtn}>
+              <IoniIcons
+                name="chevron-back"
+                size={20}
+                onPress={navigation.goBack}
+              />
+            </View >
+            {/* <View style={style.headerBtn}>
+              <Icon name="share" size={20} color={"tomato"} />
+            </View> */}
+          </View>
       <View>
       <YoutubePlayer
         height={300}
@@ -58,3 +74,21 @@ const YoutubeStories = ({route}) => {
 }
 
 export default YoutubeStories
+
+const style = StyleSheet.create({
+  header: {
+    paddingVertical: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+  },
+  headerBtn: {
+    height: 50,
+    width: 50,
+    backgroundColor: "#fafafa",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+});
