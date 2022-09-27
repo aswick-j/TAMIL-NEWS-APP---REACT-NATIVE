@@ -13,13 +13,15 @@ import {
   StatusBar,
 } from "react-native";
 
+import { Linking } from 'react-native';
+
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import IoniIcons from "react-native-vector-icons/Ionicons";
 
 const { width } = Dimensions.get("screen");
 const DetailsScreen = ({ navigation, route }) => {
   const news = route.params;
-  console.log("====", news);
+  // console.log("====", news);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -60,7 +62,7 @@ const DetailsScreen = ({ navigation, route }) => {
             <View>
               <TouchableOpacity
                 style={style.appButtonContainer}
-                onPress={"onPress"}
+                onPress={() => Linking.openURL(news.link)}
               >
                 <Text style={style.appButtonText}>MORE DETAILS</Text>
               </TouchableOpacity>
@@ -161,6 +163,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
+    marginLeft:"34%"
   },
   appButtonText: {
     fontSize: 14,

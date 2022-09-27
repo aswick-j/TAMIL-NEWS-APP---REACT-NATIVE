@@ -34,7 +34,7 @@ const CarouselCardItem = ({ item, index }) => {
                style={styles.appButtonContainer}
                onPress={"onPress"}
               >
-                <Text style={styles.appButtonText}>MORE DETAILS</Text>
+                <Text style={styles.appButtonText}>See More</Text>
               </TouchableOpacity>
         <Text
           style={{
@@ -127,8 +127,8 @@ appButtonContainer: {
   borderRadius: 10,
   paddingVertical: 10,
   // paddingHorizontal: 12,
-  width:"30%",
-  marginLeft:"70%"
+  width:"25%",
+  marginLeft:"75%"
 },
 appButtonText: {
   fontSize: 10,

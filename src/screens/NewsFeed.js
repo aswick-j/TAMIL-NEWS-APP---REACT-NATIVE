@@ -21,7 +21,7 @@ const NewsFeed = () => {
   const navigation = useNavigation();
   const [news, setNews] = useState([]);
   useEffect(() => {
-    console.log("======");
+    // console.log("======");
     axios
       .get(
         " https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_health"
@@ -32,7 +32,7 @@ const NewsFeed = () => {
       });
   }, []);
 
-  const Card = () => {
+  const Card = (e) => {
     return (
       <View>
         {news.map((data) => (
@@ -43,8 +43,8 @@ const NewsFeed = () => {
                 "image": data.thumbnail,
                 "title": data.title,
                 "description": data.description,
-                "date":data.pubDate
-     
+                "date":data.pubDate,
+                "link":data.link
               })
             }
           >
@@ -59,7 +59,7 @@ const NewsFeed = () => {
                   source={{ uri: data.thumbnail }}
                   style={style.cardImage}
                 />
-                <View style={{ marginTop: 5 }}>
+                <View style={{ marginTop: 0 }}>
                   <View
                   // style={{
                   //   flexDirection: "row",
@@ -84,10 +84,11 @@ const NewsFeed = () => {
               <View
                 style={{
                   borderWidth: 0.3,
-                  borderStyle: "dashed",
+                  borderStyle: "solid",
                   borderRadius: 5,
                   borderColor: "grey",
-                  marginTop: 6,
+                  marginTop: 12,
+                  opacity:0.1
                 }}
               ></View>
               <View
@@ -102,7 +103,7 @@ const NewsFeed = () => {
                     fontSize: 10,
                     fontWeight: "bold",
                     // width: "30%",
-                    marginTop: 5,
+                    marginTop: 10,
                     marginLeft: 0,
                   }}
                 >
@@ -124,8 +125,8 @@ const NewsFeed = () => {
       snapToInterval={width - 20}
       // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingLeft: 20, paddingVertical: 20 }}
-      data={sliderData}
-      renderItem={({ item }) => <Card house={item} />}
+      data={news}
+      renderItem={(e) => <Card/>}
     />
   );
 };
@@ -134,7 +135,7 @@ export default NewsFeed;
 
 const style = StyleSheet.create({
   card: {
-    height: 130,
+    height: 150,
     backgroundColor: "white",
     elevation: 10,
     width: width - 40,
@@ -158,7 +159,7 @@ const style = StyleSheet.create({
   },
   appButtonText: {
     fontSize: 10,
-    marginTop: 5,
+    marginTop: 10,
     color: "tomato",
     fontWeight: "bold",
     alignSelf: "center",

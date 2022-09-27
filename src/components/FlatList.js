@@ -35,7 +35,7 @@ const FlatListData = () => {
   }, []);
   
 
-  const Card = () => {
+  const Card = (e) => {
     return (
       <View>
         {news.map((data) => (
@@ -46,8 +46,8 @@ const FlatListData = () => {
                 "image": data.thumbnail,
                 "title": data.title,
                 "description": data.description,
-                "date":data.pubDate
-     
+                "date":data.pubDate,
+                "link":data.link
               })
             }
           >
@@ -129,7 +129,7 @@ const FlatListData = () => {
       // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingLeft: 20, paddingVertical: 20 }}
       data={news}
-      renderItem={({ news }) => <Card/>}
+      renderItem={(e) => <Card/>}
     />
   );
 };

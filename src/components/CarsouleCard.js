@@ -1,17 +1,18 @@
 import React,{useState,useEffect} from 'react'
-import { StyleSheet, Text, View,Dimensions } from 'react-native';
+import { StyleSheet, Text, View,Dimensions, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Carousel,{Pagination} from 'react-native-snap-carousel'
 import data, { sliderData } from "../models/data";
 import CarouselCardItem from "../components/carsouleCardItem";
 import axios from "axios";
-
+import {useNavigation} from '@react-navigation/native';
 export const SLIDER_WIDTH = Dimensions.get("window").width;
 
 const CarsouleCard = () => {
+  
     const isCarousel = React.useRef(null)
     const [index, setIndex] = useState(0);
-
+    const navigation = useNavigation();
     const [news, setNews] = useState([]);
   
     useEffect(() => {
@@ -23,6 +24,7 @@ const CarsouleCard = () => {
     }, []);
 
   return (
+    <Pressable onPress={""}>
     <View>
     <Carousel
     layout="default"
@@ -58,6 +60,7 @@ const CarsouleCard = () => {
    inactiveDotScale={0.6}
  /> */}
  </View>
+ </Pressable>
   )
 }
 
