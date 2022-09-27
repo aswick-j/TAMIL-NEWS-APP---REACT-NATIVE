@@ -19,7 +19,7 @@ import IoniIcons from "react-native-vector-icons/Ionicons";
 const { width } = Dimensions.get("screen");
 const DetailsScreen = ({ navigation, route }) => {
   const news = route.params;
-  // console.log("====", news);
+  console.log("====", news);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView showsVerticalScrollIndicator={false}>

@@ -62,7 +62,7 @@ const FlatListData = () => {
                   source={{ uri: data.thumbnail }}
                   style={style.cardImage}
                 />
-                <View style={{ marginTop: 5 }}>
+                <View style={{ marginTop: 0 }}>
                   <View
                   // style={{
                   //   flexDirection: "row",
@@ -87,10 +87,11 @@ const FlatListData = () => {
               <View
                 style={{
                   borderWidth: 0.3,
-                  borderStyle: "dashed",
+                  borderStyle: "solid",
                   borderRadius: 5,
                   borderColor: "grey",
-                  marginTop: 6,
+                  marginTop: 12,
+                  opacity:0.1
                 }}
               ></View>
               <View
@@ -105,7 +106,7 @@ const FlatListData = () => {
                     fontSize: 10,
                     fontWeight: "bold",
                     // width: "30%",
-                    marginTop: 5,
+                    marginTop: 10,
                     marginLeft: 0,
                   }}
                 >
@@ -137,7 +138,7 @@ export default FlatListData;
 
 const style = StyleSheet.create({
   card: {
-    height: 130,
+    height: 150,
     backgroundColor: "white",
     elevation: 10,
     width: width - 40,
@@ -161,7 +162,7 @@ const style = StyleSheet.create({
   },
   appButtonText: {
     fontSize: 10,
-    marginTop: 5,
+    marginTop: 10,
     color: "tomato",
     fontWeight: "bold",
     alignSelf: "center",

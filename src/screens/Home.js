@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   livetext1: {
     paddingLeft: 20,
-    marginBottom:10,
+    marginBottom:0,
     color: "black",
     fontWeight: "800",
   },
