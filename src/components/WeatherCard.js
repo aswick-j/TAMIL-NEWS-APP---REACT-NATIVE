@@ -10,7 +10,7 @@ export default function WeatherCard() {
   const [weatherv2Data, setWeatherv2Data] = useState([]);
   const [sunrise,setSunrise] = useState("")
   const [sunset,setSunset] = useState("")
-
+  const [wind,setWind] = useState("")
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -39,6 +39,8 @@ export default function WeatherCard() {
           setCelcius(last4Num);
           setWeatherv2Data(response.data.weather);
 
+          setWind(response.data.wind.speed)
+          // console.log("====",response.data.wind.speed);
           const unixTimestamp = response.data.sys.sunrise;
 
           const date = new Date(unixTimestamp * 1000);
@@ -143,7 +145,7 @@ export default function WeatherCard() {
               color: "tomato",
             }}
           >
-            {weatherData.wind.speed} miles/hour
+            {wind} miles/hour
           </Text>
         </View>
         <View style={styles.wcontainer}>
