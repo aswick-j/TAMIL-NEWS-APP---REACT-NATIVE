@@ -12,7 +12,7 @@ const YoutubePlaylist = ({}) => {
   useEffect(() => {
     axios
       .get(
-        "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLZjYaGp8v2I95vxBYNTtS10V4kPlaTZAv&key=AIzaSyCKhpsrokrQFAUNsqN2AZhNUuAqwaXqtv8"
+        "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLMJXh1dZVlOA-a4fvA8XuwDxQh4b7x0hu&key=AIzaSyCKhpsrokrQFAUNsqN2AZhNUuAqwaXqtv8"
       )
       .then((response) => {
         setYtplaylist(response.data.items);
