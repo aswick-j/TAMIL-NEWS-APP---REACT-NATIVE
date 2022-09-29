@@ -25,7 +25,7 @@ const FlatListData = () => {
    
     axios
       .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_Tamilnadu_News"
+        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_editor_choice"
       )
       .then((response) => {
         setNews(response.data.items);
@@ -35,10 +35,12 @@ const FlatListData = () => {
   }, []);
   
 
-  const Card = (e) => {
+  const Card = (datas) => {
+
+    let data = datas.data.item
     return (
       <View>
-        {news.map((data) => (
+
           <Pressable
             activeOpacity={0.8}
             onPress={() =>
@@ -118,7 +120,6 @@ const FlatListData = () => {
               </View>
             </View>
           </Pressable>
-        ))}
       </View>
     );
   };
@@ -129,7 +130,7 @@ const FlatListData = () => {
       // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingLeft: 20, paddingVertical: 20 }}
       data={news}
-      renderItem={(e) => <Card/>}
+      renderItem={(data) => <Card data={data}/>}
     />
   );
 };

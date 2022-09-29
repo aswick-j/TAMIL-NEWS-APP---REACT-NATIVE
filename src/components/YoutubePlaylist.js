@@ -13,21 +13,21 @@ const YoutubePlaylist = ({}) => {
  
   // console.log("====",id);
 
-  let utubeId;
+  // let utubeId;
 
-  if(id.id==1){
-    utubeId = "NX18e_Wh7NA";
-  }else if(id.id==2){
-    utubeId = "2ywxK3HC4iA";
-  }else if(id.id==3){
-    utubeId = "pjtqXBTWliE";
-  }else if(id.id==4){
-    utubeId = "FeweQREkl44";
-  }else if(id.id==5){
-    utubeId = "NX18e_Wh7NA";
-  }else if(id.id==6){
-    utubeId = "2sdziNt17qU";
-  }
+  // if(id.id==1){
+  //   utubeId = "NX18e_Wh7NA";
+  // }else if(id.id==2){
+  //   utubeId = "2ywxK3HC4iA";
+  // }else if(id.id==3){
+  //   utubeId = "pjtqXBTWliE";
+  // }else if(id.id==4){
+  //   utubeId = "FeweQREkl44";
+  // }else if(id.id==5){
+  //   utubeId = "NX18e_Wh7NA";
+  // }else if(id.id==6){
+  //   utubeId = "2sdziNt17qU";
+  // }
   
 // console.log('====================================');
 // console.log(utubeId);

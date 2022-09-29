@@ -21,17 +21,18 @@ const Stories = () => {
       name: 'Polimer News',
       image: require('../assets/c8e15db56ae56c48af60e11f4b196d7a_screen.jpg'),
     },
+    ,
     {
       id: 4,
+      name: 'News 18 Tamilnadu',
+      image: require('../assets/News18_Tamil_Nadu.jpg'),
+    },
+    {
+      id: 5,
       name: 'Thanthi News',
       image: require('../assets/unnamed.png'),
     },
-    ,
-    {
-      id: 5,
-      name: 'News 7',
-      image: require('../assets/unnamed.jpg'),
-    },
+
     ,
     {
       id: 6,

@@ -30,12 +30,12 @@ const CarouselCardItem = ({ item, index }) => {
       >
        
        <View style={styles.overlayView}>
-       <TouchableOpacity
+       {/* <TouchableOpacity
                style={styles.appButtonContainer}
                onPress={"onPress"}
               >
                 <Text style={styles.appButtonText}>See More</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
         <Text
           style={{
             fontWeight: "bold",

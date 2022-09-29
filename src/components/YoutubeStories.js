@@ -20,11 +20,11 @@ const YoutubeStories = ({navigation,route}) => {
   }else if(id.id==2){
     utubeId = "2ywxK3HC4iA";
   }else if(id.id==3){
-    utubeId = "pjtqXBTWliE";
+    utubeId = "qWOgDVvw6j0";
   }else if(id.id==4){
-    utubeId = "FeweQREkl44";
+    utubeId = "mQrZJFyYzlI";
   }else if(id.id==5){
-    utubeId = "NX18e_Wh7NA";
+    utubeId = "FeweQREkl44";
   }else if(id.id==6){
     utubeId = "2sdziNt17qU";
   }
@@ -58,16 +58,16 @@ const YoutubeStories = ({navigation,route}) => {
               <Icon name="share" size={20} color={"tomato"} />
             </View> */}
           </View>
-      <View>
+      <View style={{marginLeft:30,marginRight:30}}>
       <YoutubePlayer
-        height={300}
+        height={300}  
         play={playing}
         videoId={utubeId}
         onChangeState={onStateChange}
       />
-      <View style={[{ width: "30%", margin: 10, backgroundColor: "red",borderRadius:10,marginLeft:"35%" }]}>
+      {/* <View style={[{ width: "30%", margin: 10, backgroundColor: "red",borderRadius:10,marginLeft:"35%" }]}>
       <Button color="tomato" title={playing ? "pause" : "play"} onPress={togglePlaying} />
-      </View>
+      </View> */}
     </View>
     </SafeAreaView>
   )

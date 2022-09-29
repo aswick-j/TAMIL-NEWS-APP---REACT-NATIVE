@@ -108,7 +108,7 @@ const style = StyleSheet.create({
   headerBtn: {
     height: 50,
     width: 50,
-    backgroundColor: "#fafafa",
+    backgroundColor: "#f7f7f7",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -163,7 +163,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
-    marginLeft:"34%"
+    marginLeft:"37%"
   },
   appButtonText: {
     fontSize: 14,

@@ -24,7 +24,6 @@ const CarsouleCard = () => {
     }, []);
 
   return (
-    <Pressable onPress={""}>
     <View>
     <Carousel
     layout="default"
@@ -60,7 +59,6 @@ const CarsouleCard = () => {
    inactiveDotScale={0.6}
  /> */}
  </View>
- </Pressable>
   )
 }
 

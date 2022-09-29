@@ -6,10 +6,10 @@ import {WebView} from 'react-native-webview';
 
 const Weather = () => {
   return (
-    <SafeAreaView>
-       <WebView source={{ uri: 'https://reactnative.dev/' }} />
-{/* <WeatherCard/> */}
-    </SafeAreaView>
+    <>
+  
+<WeatherCard/>
+    </>
   )
 }
 
