@@ -25,7 +25,7 @@ const FlatListData = () => {
    
     axios
       .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_editor_choice"
+        "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.dinakaran.com%2Frss_news.asp%3Fid%3D10"
       )
       .then((response) => {
         setNews(response.data.items);
@@ -49,7 +49,8 @@ const FlatListData = () => {
                 "title": data.title,
                 "description": data.description,
                 "date":data.pubDate,
-                "link":data.link
+                "link":data.link,
+                "article":"Dinakaran"
               })
             }
           >
@@ -77,7 +78,7 @@ const FlatListData = () => {
                       style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        width: "28%",
+                        width: width-170,
                         marginLeft: 10,
                       }}
                     >

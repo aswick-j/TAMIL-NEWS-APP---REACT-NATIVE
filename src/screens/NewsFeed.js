@@ -24,7 +24,7 @@ const NewsFeed = () => {
  
     axios
       .get(
-        " https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_Tamilnadu_News"
+        " https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.vikatan.com%2Fapi%2Fv1%2Fcollections%2Flatest-news.rss%3F%26time-period%3Dlast-24-hours"
       )
       .then((response) => {
         setNews(response.data.items);
@@ -46,7 +46,8 @@ const NewsFeed = () => {
                 "title": data.title,
                 "description": data.description,
                 "date":data.pubDate,
-                "link":data.link
+                "link":data.link,
+                "article":"Vikatan"
               })
             }
           >
@@ -75,6 +76,7 @@ const NewsFeed = () => {
                         fontSize: 14,
                         fontWeight: "bold",
                         width: "28%",
+                        width: width-170,
                         marginLeft: 10,
                       }}
                     >

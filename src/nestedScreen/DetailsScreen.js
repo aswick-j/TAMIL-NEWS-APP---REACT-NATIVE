@@ -53,7 +53,7 @@ const DetailsScreen = ({ navigation, route }) => {
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           ></View>
          <Text style={{ marginTop: 20,fontWeight:"bold", color: "tomato" }}>
-           Article Credits : Puthiya Thalaimurai
+           Article Credits : {news.article}
           </Text>
           <Text style={{ marginTop: 20, color: "black" }}>
             {news.description}
