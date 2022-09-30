@@ -2,8 +2,9 @@ import * as React from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { Audio } from "expo-av";
 import IoniIcons from "react-native-vector-icons/Ionicons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function FMplay({navigation:{ goBack } ,route}) {
+export default function FMplay({navigation ,route}) {
     const id = route.params;
     console.log("id",id);
 
@@ -20,9 +21,12 @@ export default function FMplay({navigation:{ goBack } ,route}) {
 
   async function playSound() {
     console.log("Loading Sound");
+    await Audio.setAudioModeAsync({
+        staysActiveInBackground: true,
+      });
     const { sound } = await Audio.Sound.createAsync({
       uri: url,
-    });
+    },);
     setSound(sound);
 
     console.log("Playing Sound");
@@ -37,16 +41,21 @@ export default function FMplay({navigation:{ goBack } ,route}) {
       : undefined;
   }, [sound]);
   return (
-    <View>
-      <IoniIcons
+    <SafeAreaView>
+    <View style={styles.header}>
+       <View style={styles.headerBtn}>
+              <IoniIcons
                 name="chevron-back"
                 size={20}
-                onPress={() => goBack()} title="Go back from ProfileScreen" 
+                onPress={navigation.goBack}
               />
+            </View >
+            </View>
     <View style={styles.container}>
-      <Button title="Play Sound" color={"tomato"} onPress={playSound} />
+      <Button title="Play FM" color={"tomato"} onPress={playSound} />
     </View>
-    </View>
+   
+    </SafeAreaView>
   );
 }
 
@@ -57,10 +66,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: "35%",
   },
+  header: {
+    paddingVertical: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+  },
  text1: {
     marginLeft: 20,
     color: "black",
     fontWeight: "800",
     marginTop:20
-  }
+  },
+  headerBtn: {
+    height: 50,
+    width: 50,
+    backgroundColor: "#fafafa",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
