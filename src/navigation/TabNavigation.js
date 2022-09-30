@@ -36,7 +36,7 @@ const BottomTabNavigator = () => {
             iconName = focused ? "ios-home" : "ios-home-outline";
           } else if (route.name === "News") {
             iconName = focused ? "newspaper-outline" : "newspaper-outline";
-          } else if (route.name === "Videos") {
+          } else if (route.name === "Media") {
             iconName = focused ? "play-circle-outline" : "play-circle-outline";
           } else if (route.name === "Weather") {
             iconName = focused
@@ -80,7 +80,7 @@ const BottomTabNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Videos"
+        name="Media"
         component={LiveStackNavigator}
         options={{ headerShown: false }}
       />
